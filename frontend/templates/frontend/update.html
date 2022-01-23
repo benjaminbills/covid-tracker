@@ -1,0 +1,28 @@
+{%extends 'frontend/base.html'%} 
+{% load static%} 
+{% block styles %} 
+{% endblock %}
+{%block content %}
+<div class="row">
+	<div class="col-md-9">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+				{% for form in form%}
+        <label class="form-label">{{form.label}}</label>
+        {{form}}
+				<hr>
+				{% endfor %}
+				
+				<input type="submit" name="Submit">
+			</form>
+
+		</div>
+	</div>
+</div>
+{% endblock %} 
+
+{% block script %}
+<script src="{% static 'js/app.js'%}"></script>
+{% endblock %}
