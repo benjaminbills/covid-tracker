@@ -1,0 +1,90 @@
+<nav
+  class="navbar navbar-light bg-faded justify-content-between flex-nowrap flex-row"
+>
+  <div class="container">
+    <a href="/" class="navbar-brand float-left">Active Report</a>
+    <ul class="nav navbar-nav flex-row float-right">
+      <li class="nav-item m-2">
+        <button
+          class="nav-link btn btn-secondary p-1"
+          
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          href=""
+        >
+          Upload Data
+        </button>
+      </li>
+      <li class="nav-item m-2">
+        <a class="nav-link btn btn-secondary p-1" href="{% url 'list_data' %}">Data</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Upload Excel Document
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Your Excel file should be in this format.</p>
+        <p>table head should be in small letters.</p>
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">address</th>
+      <th scope="col">lat</th>
+      <th scope="col">long</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Caroline kago</td>
+      <td>Junction Mall</td>
+      <td>-1.3455</td>
+      <td>38.899</td>
+      <td>2022-01-23</td>
+    </tr>
+  </tbody>
+</table>
+        <form
+          method="POST"
+          action="{% url 'upload' %}"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <input
+            class="form-control"
+            type="file"
+            id="document"
+            name="document"
+          />
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
