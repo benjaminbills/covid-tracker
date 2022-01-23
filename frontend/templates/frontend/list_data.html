@@ -1,0 +1,64 @@
+{%extends 'frontend/base.html'%} 
+{% load static%} 
+{% block styles %} 
+{% endblock %}
+{%block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <form method="get">
+    <div class="input-group mb-3">
+      <th></th>
+      <th>
+        {{my_filter.form.name.label}}
+        {{my_filter.form.name}}
+      </th>
+      <th>
+        {{my_filter.form.address.label}}
+        {{my_filter.form.address}}
+      </th>
+      <th>
+
+        <button class="btn btn-outline-secondary" type="submit" >Search</button>
+      </th>
+    </div>
+  </form>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope='col'>Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    {% for address in addresses%}
+
+    <tr>
+      <th scope="row">{{address.id}}</th>
+      <td>{{address.name}}</td>
+      <td>{{address.address}}</td>
+      <td>{{address.lat}}</td>
+      <td>{{address.long}}</td>
+      <td>{{address.date}}</td>
+      <form action="{% url 'delete' address.id%}" method="post">
+        {% csrf_token %}
+        <td><button class="btn btn-sm btn-danger" > Delete</button></td>
+      </form>
+      <td>
+        <a href="{% url 'update' address.id%}" class="btn btn-sm btn-info">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %} 
+
+{% block script %}
+<script src="{% static 'js/app.js'%}"></script>
+{% endblock %}
