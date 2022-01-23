@@ -1,0 +1,25 @@
+{%extends 'frontend/base.html'%} 
+{% load static%} 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+{%block content %}
+<div style=" width: 100%%;
+        height: 700px;
+        position: relative;
+        ">
+  <div id="map" style="width: 100%; height: 700px; position:absolute"></div>
+  {% comment %} <div style="z-index: 9;position:absolute">
+    <ul id='months'>
+      <li><a href="/">All</a></li>
+      <li><a href="#news">Jan</a></li>
+      <li><a href="#contact">Feb</a></li>
+      <li><a href="#about">March</a></li>
+    </ul>
+  </div> {% endcomment %}
+</div>
+{% endblock %} 
+
+{% block script %}
+<script src="{% static 'js/app.js'%}"></script>
+{% endblock %}
