@@ -7,11 +7,11 @@ from .forms import AddressForm
 import pandas as pd
 from address.models import Address
 # Create your views here.
+
 def home(request):
-  address = Address.objects.filter(date__month=1, date__year='2022').distinct()
-  print(address)
   return render(request, 'frontend/home.html')
 
+#CREATE
 def upload(request):
   if request.method == 'POST':
     data = request.FILES['document']
@@ -23,13 +23,14 @@ def upload(request):
       for NAME, ADDRESS, LONG, LAT, DATE in zip(extract_data.name,extract_data.address, extract_data.long, extract_data.lat, extract_data.date):
         address = Address(name=NAME,address=ADDRESS, long=LONG, lat=LAT, date=DATE)
         address.save()
-        return redirect('home')
+        print(address)
+      return redirect('home')
     except:
       message = {'bad data'}
       print(message)
   return render(request, 'frontend/home.html')
 
-
+#READ
 def list_data(request):
   addresses = Address.objects.all()
   my_filter = AddressFilter(request.GET, queryset=addresses)
@@ -37,7 +38,7 @@ def list_data(request):
   context = {'addresses':addresses, 'my_filter':my_filter}
   return render(request, 'frontend/list_data.html', context)
 
-
+#DELETE
 def delete(request, pk):
 	address = Address.objects.get(id=pk)
 	if request.method == "POST":
@@ -46,6 +47,7 @@ def delete(request, pk):
 
 	return redirect('list_data')
 
+#UPDATE
 def update(request, pk):
 
 	order = Address.objects.get(id=pk)
