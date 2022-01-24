@@ -1,8 +1,16 @@
 # Covid Tracker
 A web app for storing data about covid patients
 
-## [Usage]()
+## [Usage](https://covid-tracker-assessement.herokuapp.com/)
 ![alt text](https://res.cloudinary.com/dd2y96zp9/image/upload/v1643015855/image_ruuujw.png)
+
+## Uploading Data Instruction
+Create an excel file(.xlxs) in this format
+Ensure table headings are in small letters.
+| name          | address         | lat   |long   |date      |
+| :------------ |:---------------:| -----:|------:|---------:|
+| caorline      | Junction Mall   | -1.26 |36.896 |2022-01-08|
+
 
 ## Installation Instruction
 To get the code..
