@@ -8,7 +8,7 @@ const map = new mapboxgl.Map({
 });
 
 map.on("load", function () {
-  fetch("http://localhost:8000/api/address/")
+  fetch("https://covid-tracker-assessement.herokuapp.com/api/address/")
     .then((res) => res.json())
     .then((data) =>
       data.forEach((element) => {
