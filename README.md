@@ -2,6 +2,7 @@
 A web app for storing data about covid patients
 
 ## [Usage]()
+![alt text](https://github.com/benjaminbills/covid-tracker/blob/image.png?raw=true)
 
 ## Installation Instruction
 To get the code..
